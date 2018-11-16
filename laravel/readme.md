@@ -1,3 +1,25 @@
+- Ferramenta: VS CODE
+
+Instalando extensões:
+
+PHP intelephense
+PHP DocBlocker (Neil Brayfield) – Automatiza a criação de comentários do PHPDoc
+Laravel 5 Snippets (Winnie Lin) – Snippets que facilitam o uso das facades do Laravel
+Laravel Blade Snippets (Winnie Lin) – Snippets que facilitam do template engine Blade
+Laravel Helpers (Rafa-Acioly) – Auto complete para os helpers do Laravel
+Laravel Artisan (Ryan Naddy) – Permite executar os comandos do Artisan de forma fácil direto no editor
+Laravel goto View (Codingyu) – Permite abrir as views referenciadas usando Ctrl
+Laravel-goto-controller (Stef-k) – Permite abrir os controllers a partir das rotas de forma fácil
+IntelliSense for CSS class name (Zignd) – Analisa arquivos CSS e disponibiliza autocomplete das classes
+
+-Baixar i iniciar laravel
+
+composer create-project --prefer-dist laravel/laravel blog "5.5.*"
+php artisan serve
+
+
+------------------------------------------------------------------------------------------------------
+
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
 <p align="center">

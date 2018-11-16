@@ -1,0 +1,14 @@
+{
+    "name": "hugo/cursos",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Hugo do Valle",
+            "email": "vhavhugo@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        
+    }
+}

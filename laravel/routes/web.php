@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('layout');
 });
 
 Route::redirect('cliente','treinaweb/clients',301);
@@ -20,10 +20,12 @@ Route::redirect('cliente','treinaweb/clients',301);
 Route::prefix('treinaweb/clients')->group(function(){
 
     Route::get('/', function(){
-        $client = 'Maria';
+        $clients = [];
         $group = 'Atacado';
-
-        return view('clients.index', compact('client','group'));
+        return view('clients.index',[
+            'clients' => $clients,
+            'group' => $group
+        ]);
     })->name('clients.list');
     
     Route::get('create/new', function(){

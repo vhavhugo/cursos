@@ -4,6 +4,8 @@
 <br>
 {{ Route::currentRouteName() }}
 <br>
-{!! '<script>alert("Ola mundo")</script>' !!}
+{{-- '<script>alert("Ola mundo")</script>' --}}
 
 @{{ cliente }}
+<br>
+{{ $cliente }} - {{ $group }}

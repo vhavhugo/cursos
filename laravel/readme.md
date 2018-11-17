@@ -1,3 +1,6 @@
+- Gerando o layout padrão do Laravel
+php artisan make:auth
+
 - Ferramenta: VS CODE
 
 Instalando extensões:

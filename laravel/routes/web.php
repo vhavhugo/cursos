@@ -20,7 +20,9 @@ Route::redirect('cliente','treinaweb/clients',301);
 Route::prefix('treinaweb/clients')->group(function(){
 
     Route::get('/', function(){
-        return '<h1>Lista de clientes</h1>';
+        return '<h1>Lista de clientes</h1> <br>' 
+        . Route::current()->uri
+        . "<br>" . Route::currentRouteName();
     })->name('clients.list');
     
     Route::get('create/new', function(){

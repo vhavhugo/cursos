@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use \App\Client;
 
 class ClientController extends Controller
 {
@@ -13,7 +14,7 @@ class ClientController extends Controller
      */
     public function index()
     {
-        $clients = \App\Client::get();
+        $clients = Client::get();
         return view('clients.index', compact('clients'));
     }
 
@@ -35,7 +36,13 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        echo "Chegou no store";
+       $client = new Client;
+       $client->name = $request->input('name');
+       $client->email = $request->input('email');
+       $client->age = $request->input('age');
+       $client->save();
+
+       return redirect()->route('clients.index');
     }
 
     /**
@@ -46,7 +53,7 @@ class ClientController extends Controller
      */
     public function show($id)
     {
-        $client = \App\Client::find($id);
+        $client = Client::findOrFail($id);
         return view('clients.show', compact('client'));
     }
 
@@ -58,7 +65,7 @@ class ClientController extends Controller
      */
     public function edit($id)
     {
-        $client = \App\Client::find($id);
+        $client = Client::findOrFail($id);
         return view('clients.edit', compact('client'));
     }
 
@@ -71,7 +78,13 @@ class ClientController extends Controller
      */
     public function update(Request $request, $id)
     {
-       echo "Estou no método update";
+       $client = Client::findOrFail($id);
+       $client->name = $request->input('name');
+       $client->email = $request->input('email');
+       $client->age = $request->input('age');
+       $client->save();
+
+       return redirect()->route('clients.index');
     }
 
     /**

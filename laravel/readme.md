@@ -1,3 +1,15 @@
+- Executando migrations
+php artisan migrate
+
+-- Criar uma tabela
+php artisan make:migration create_clients_table
+
+- Criar um model
+php artisan make:model Client
+
+- Criar model e migration juntos
+php artisan make:model Task -m
+
 - Gerando o layout padrão do Laravel
 php artisan make:auth
 

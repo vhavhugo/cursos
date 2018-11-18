@@ -1,3 +1,6 @@
+- Listar todas a s rotas do projeto
+php artisan route:list
+
 - Executando migrations
 php artisan migrate
 
@@ -12,6 +15,9 @@ php artisan make:model Task -m
 
 - Criar um controller
 php artisan make:controller ClientController
+
+- Criar um Cotroller Resource - Padrão Laravel de métodos
+php artisan make:controller ClientController --resource
 
 - Gerando o layout padrão do Laravel
 php artisan make:auth

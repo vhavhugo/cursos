@@ -10,6 +10,9 @@ php artisan make:model Client
 - Criar model e migration juntos
 php artisan make:model Task -m
 
+- Criar um controller
+php artisan make:controller ClientController
+
 - Gerando o layout padrão do Laravel
 php artisan make:auth
 

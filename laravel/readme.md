@@ -1,3 +1,6 @@
+- Emmet - Pacote ex: div.row + tab faz o código
+emmet.io
+
 - Listar todas a s rotas do projeto
 php artisan route:list
 

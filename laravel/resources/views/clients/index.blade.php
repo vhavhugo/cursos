@@ -26,7 +26,9 @@
                                 </a>
                             </td>
                             <td>{{ $client->email }}</td>
-                            <td></td>
+                            <td>
+                                <a href="{{ route('clients.edit', $client->id) }}">Edit</a>
+                            </td>
                         </tr>   
                     @empty
                     <tr>
@@ -35,6 +37,7 @@
                     @endforelse                    
                 </tbody>
             </table>
+            <a href="{{ route('clients.create') }}">Criar Cliente</a>
         </div>
     </div>
 @endsection

@@ -2,35 +2,14 @@
 
 @section('content');
 <div class="container">
-    {{ Route::current()->uri }}
-    <br>
-    {{ Route::currentRouteName() }}
-    <br>
-    {{-- '<script>alert("Ola mundo")</script>' --}}
-    
-    {{--  @{{ cliente }}  --}}
-    <br>
-    {{--  {{ $cliente }} - {{ $group }}  --}}
-    <br>
-    @if($group == 'Restaurante')
-        <p>O grupo é Restaurante</p>
-    @elseif ($group == 'Atacado')
-        <p>O grupo é Atacado</p>
-    @else
-        <p>O grupo não é Restaurante
-    @endif
-    
-    @for ($i = 0; $i < 10; $i++)
-    <p>O número é {{ $i }}</p>
-    @endfor
-    
     @forelse ($clients as $client)
-        <p>Nome cliente: {{ $client }} </p>
+        <p>ID cliente: {{ $client->id }} </p>
+        <p>Nome cliente: {{ $client->name }} </p>
+        <p>Email cliente: {{ $client->email }} </p>
+        <p>Idade cliente: {{ $client->age }} </p>
     @empty
-        <p>Nenhum cliente</p>
+        <p>Nenhum cliente cadastrado!</p>
     @endforelse
-            
-    @endsection
-    
 </div>
+@endsection
 

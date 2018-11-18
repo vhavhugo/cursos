@@ -18,7 +18,7 @@ class CreateClientsTable extends Migration
             $table->string('name', 100);
             $table->string('email', 50);
             $table->integer('age');
-            $table->timestamps();
+            $table->timestamp();
         });
     }
 
@@ -28,7 +28,7 @@ class CreateClientsTable extends Migration
      * @return void
      */
     public function down()
-    {
+    { $table->timestamps();
         Schema::dropIfExists('clients');
     }
 }

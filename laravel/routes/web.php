@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ClientController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,32 +20,11 @@ Route::get('/', function () {
 Route::redirect('cliente','treinaweb/clients',301);
 
 Route::prefix('treinaweb/clients')->group(function(){
-
     Route::get('/', 'ClientController@index')->name('clients.list');
-    
-    Route::get('create/new', function(){
-
-        return view('clients.form');
-
-    });
-    
-    Route::match(['post','put'], 'save', function(){
-        return 'Cliente criado com sucesso!';
-    })->name('clients.save');
-
-    Route::get('edit/{id}/{name}', function($id, $name){
-        return view('clients.form'); 
-    })->name('clients.edit');
-
-    // Route::get('{name}/{age?}', function($name, $age='não definido'){
-    //     $html = "Detalhes do cliente {$name} ele tem {$age} anos";
-    //     $html .= '<br><a href="' . route('clients.list') . '">Lista de Clientes</a>';
-    //     return $html;
-    // })->where(['age' => '[0-9]+', 'name' => '[A-Za-z]+']);
-    
+    Route::get('create/new', 'ClientController@create');
+    Route::any('save','ClientController@save')->name('clients.save');
+    Route::get('edit/{id}/{name}', 'ClientController@edit')->name('clients.edit');
 });
-
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

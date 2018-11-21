@@ -1,6 +1,12 @@
 - Emmet - Pacote ex: div.row + tab faz o código
 emmet.io
 
+- Criar link para pasta upload
+php artisan storage:link
+exemplo:
+<img src="{{ asset('storage/' . str_after($client->photo, 'public/'))  }}"
+alt="" width="600">
+
 - Listar todas a s rotas do projeto
 php artisan route:list
 
@@ -8,7 +14,10 @@ php artisan route:list
 php artisan migrate
 
 -- Criar uma tabela
-php artisan make:migration create_clients_table
+
+
+-- Alterar uma tabela
+php artisan make:migration alter_clients_table
 
 - Criar um model
 php artisan make:model Client

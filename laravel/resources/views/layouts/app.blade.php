@@ -17,6 +17,17 @@
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top"></nav>
             <div class="container">
+
+                {{ request()->method() }}
+
+                @if(request()->isMethod('get'))
+                    <p>metodo get</p>
+                @endif
+
+                @if(request()->is('clients*'))
+                    <p>Estou no Clients</p>
+                @endif
+
                 <div class="row">
                     <div class="col-md-12 text-center">
                         @yield('titulo-pagina')

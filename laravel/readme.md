@@ -1,3 +1,7 @@
+Repositório GIT liguagem portugues do laravel
+https://github.com/enniosousa/laravel-5.5-pt-BR-localization
+
+
 - Emmet - Pacote ex: div.row + tab faz o código
 emmet.io
 

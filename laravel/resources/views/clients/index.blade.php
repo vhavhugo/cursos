@@ -4,7 +4,8 @@
     <h1>Lista de Clientes</h1>
 @endsection
 
-@section('content');
+@section('content')
+
     <div class="row">
         <div class="col-md-12">
             <table class="table table-striped">

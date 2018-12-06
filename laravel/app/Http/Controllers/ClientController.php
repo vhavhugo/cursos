@@ -13,13 +13,9 @@ class ClientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $request->session()->put('cursos', ['Laravel', 'Slim']);
-        $request->session()->push('cursos', 'Silex');
 
-        $request->session()->flash('aviso','Novo cliente cadastrado');
-        $request->session()->flash('tipo','sucesso');
 
         $clients = Client::get();
         return view('clients.index', compact('clients'));
@@ -30,15 +26,9 @@ class ClientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
-        //$request->session()->reflash();
-        //$request->session()->keep();
-        echo session('aviso');
 
-        echo "<pre>";
-        print_r($request->session()->all());
-        echo "</pre>";
         return view('clients.create');
     }
 
@@ -50,12 +40,6 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => ['required', 'max:100', 'min:3'],
-            'email' => ['required', 'email', 'unique:Clients'],
-            'age' => ['required', 'integer'],
-            'photo' => ['required', 'photo' => 'mimes:jpeg,bmp,png']
-        ]);
 
         $client = new Client;
         
@@ -63,11 +47,15 @@ class ClientController extends Controller
             $client->photo = $request->photo->store('public');
         }
 
-
        $client->name = $request->input('name');
        $client->email = $request->input('email');
        $client->age = $request->input('age');
-       $client->save();
+
+       if($client->save()){
+            $request->session()->flash('success','Cliente cadastrado com sucesso!');
+       }else{
+           $request->session()->flash('error','Erro ao cadastrar cliente');
+       }
 
        return redirect()->route('clients.index');
     }
@@ -121,11 +109,15 @@ class ClientController extends Controller
        $client->name = $request->input('name');
        $client->email = $request->input('email');
        $client->age = $request->input('age');
-       $client->save();
+
+       if($client->save()){
+            $request->session()->flash('success','Cliente atualizado com sucesso!');
+        }else{
+            $request->session()->flash('error','Erro ao atualizar cliente');
+        }
 
        return redirect()->route('clients.index');
     }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -136,7 +128,11 @@ class ClientController extends Controller
     {
         $client = Client::findOrfail($id);
         if($client->delete()){
-            return redirect()->route('clients.index');
+            session()->flash('success','Cliente deletado com sucesso!');
+        }else{
+            session()->flash('error','Erro ao deletar cliente');
         }
+            return redirect()->route('clients.index');
+
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Validator;
 use Illuminate\Http\Request;
 use \App\Client;
 
@@ -12,8 +13,11 @@ class ClientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $request->session()->put('cursos', ['Laravel', 'Slim']);
+        $request->session()->push('cursos', 'Silex');
+
         $clients = Client::get();
         return view('clients.index', compact('clients'));
     }
@@ -23,8 +27,9 @@ class ClientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
+        dd(session());
         return view('clients.create');
     }
 
@@ -91,7 +96,15 @@ class ClientController extends Controller
      */
     public function update(Request $request, $id)
     {
+        Validator::make($request->all(), [
+            'name' => ['required', 'max:100', 'min:3'],
+            'email' => ['required', 'email', 'unique:Clients'],
+            'age' => ['required', 'integer'],
+            'photo' => ['photo' => 'mimes:jpeg,bmp,png']
+        ])->validate();
+
         $client = Client::findOrFail($id);
+        
         if($request->hasFile('photo')){
             $client->photo = $request->photo->store('public');
         }

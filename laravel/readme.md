@@ -1,3 +1,14 @@
+Trabalhando com sessões precisamos manipular os dados
+
+put('key', 'value') : Inclui um novo item na sessão
+get('key') : recupera um valor gravado na sessão a partir da chave
+has('key') : Verifica se existe o item key em nossa session e se não é null
+exists('key') : Verifica se o item key existe na sessão
+push('key.array', 'field') : Inclui um novo item em um array de Session já existente
+forget('key') : Remove o item key da session
+flush() : Remove todos os itens da session
+regenerate() : Regenera o ID interno da session
+
 Repositório GIT liguagem portugues do laravel
 https://github.com/enniosousa/laravel-5.5-pt-BR-localization
 

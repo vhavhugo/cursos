@@ -19,6 +19,8 @@ Route::get('/', function () {
 
 Route::resource('clients', 'ClientController');
 
-Auth::routes();
+Route::get('tasks/add/{id}', 'ToDoTasksController@store');
+Route::get('tasks/delete/{id}', 'ToDoTasksController@destroy');
 
+Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');

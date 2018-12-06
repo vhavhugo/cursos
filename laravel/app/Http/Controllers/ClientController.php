@@ -15,8 +15,7 @@ class ClientController extends Controller
      */
     public function index()
     {
-
-
+        var_dump(session('todotasks'));
         $clients = Client::get();
         return view('clients.index', compact('clients'));
     }

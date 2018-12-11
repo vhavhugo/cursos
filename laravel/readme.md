@@ -1,3 +1,19 @@
+
+
+- Instalação do redis
+
+exemplo controller: session(['cursos' =>  ['Laravel', 'Slim']]);
+
+no terminal: keys *
+
+para ver os dados já gravados no redis: 
+mget laravel_cache:Z1AhTtnF6XPRxnDBnxX0ZLyJ8g6SGL3O4fr7pRxJ
+
+https://www.digitalocean.com/community/tutorials/how-to-install-and-use-redis
+
+- Criando um middleware
+php artisan make:middleware CheckTasks
+
 Trabalhando com sessões precisamos manipular os dados
 
 put('key', 'value') : Inclui um novo item na sessão

@@ -17,6 +17,12 @@
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top"></nav>
             <div class="container">
+                @if(session('alert'))
+                    <div class="alert alert-info">
+                        {{ session('alert') }}
+                    </div>
+                @endif
+
                 @if(session('success'))
                     <div class="alert alert-success">
                         {{ session('success') }}

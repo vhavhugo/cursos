@@ -1,5 +1,11 @@
 
 
+- Criando um middleware Before
+php artisan make:middleware CheckTasks
+
+- Criando um middleware After
+php artisan make:middleware AlertTalks
+
 - Instalação do redis
 
 exemplo controller: session(['cursos' =>  ['Laravel', 'Slim']]);
@@ -11,8 +17,6 @@ mget laravel_cache:Z1AhTtnF6XPRxnDBnxX0ZLyJ8g6SGL3O4fr7pRxJ
 
 https://www.digitalocean.com/community/tutorials/how-to-install-and-use-redis
 
-- Criando um middleware
-php artisan make:middleware CheckTasks
 
 Trabalhando com sessões precisamos manipular os dados
 

@@ -17,7 +17,7 @@ class CheckTasks
     {
         $ids = $request->session()->get('todotasks');
 
-        if(!in_array($request->$id, $ids)){
+        if(!in_array($request->id, $ids)){
             $request->session()->fash('error','Não foi possível excluir item da lista');
             
             return redirect()->route('clients.index');

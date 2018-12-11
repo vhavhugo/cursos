@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\ClientController;
+use App\Http\Middleware\CheckTasks;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +20,7 @@ Route::get('/', function () {
 Route::resource('clients', 'ClientController');
 
 Route::get('tasks/add/{id}', 'ToDoTasksController@store');
-Route::get('tasks/delete/{id}', 'ToDoTasksController@destroy')->middleware('checktasks');
+Route::get('tasks/delete/{id}', 'ToDoTasksController@destroy')->middleware(CheckTasks::class);
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');

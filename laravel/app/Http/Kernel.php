@@ -36,6 +36,10 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
+        'alerttasks' => [
+            \App\Http\Middleware\NotHasAlert::class,
+            \App\Http\Middleware\HasAlert::class,
+        ],
 
         'api' => [
             'throttle:60,1',
@@ -57,7 +61,6 @@ class Kernel extends HttpKernel
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'alerttasks' => \App\Http\Middleware\AlertTalks::class
         //'checktasks' => \App\Http\Middleware\CheckTasks::class,
     ];
 }

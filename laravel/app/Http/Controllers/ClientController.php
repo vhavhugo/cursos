@@ -9,11 +9,6 @@ use \App\Client;
 class ClientController extends Controller
 {
 
-    public function __construct(Request $request)
-    {
-        $this->middleware('alerttasks')->except('create');
-    }
-
     /**
      * Display a listing of the resource.
      *

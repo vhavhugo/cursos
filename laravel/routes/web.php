@@ -15,7 +15,7 @@ use App\Http\Middleware\CheckTasks;
 
 
 
-Route::group(['middleware' => ['alerttasks']], function(){
+Route::group(['middleware' => ['alerttasks','auth']], function(){
     Route::get('/', function () {
         return view('helpers');
     });

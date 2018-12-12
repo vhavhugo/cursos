@@ -28,6 +28,7 @@
                             </td>
                             <td>{{ $client->email }}</td>
                             <td>
+                                @can('update-client', $client)
                                 <a class="btn btn-success" href="{{ route('clients.edit', $client->id) }}">Editar</a>
                                 <form style="display: inline" action="{{ route('clients.destroy', $client->id) }}" method="post">
                                     {{ csrf_field() }}
@@ -37,8 +38,8 @@
                                         onclick="return confirm('Tem certeza que deseja remover o cliente?')">
                                         Deletar
                                     </button>
-
                                 </form>
+                                @endcan
                             </td>
                         </tr>   
                     @empty

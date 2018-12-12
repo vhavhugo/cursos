@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Gate;
 use Validator;
 use Illuminate\Http\Request;
 use \App\Client;
@@ -82,6 +83,9 @@ class ClientController extends Controller
     public function edit($id)
     {
         $client = Client::findOrFail($id);
+        
+        $this->authorize('client.edit', $client);
+        
         return view('clients.edit', compact('client'));
     }
 
@@ -103,6 +107,8 @@ class ClientController extends Controller
 
         $client = Client::findOrFail($id);
         
+        $this->authorize('client.edit', $client);
+
         if($request->hasFile('photo')){
             $client->photo = $request->photo->store('public');
         }
@@ -128,6 +134,7 @@ class ClientController extends Controller
     public function destroy($id)
     {
         $client = Client::findOrfail($id);
+        $this->authorize('client.edit', $client);
         if($client->delete()){
             session()->flash('success','Cliente deletado com sucesso!');
         }else{

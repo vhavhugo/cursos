@@ -25,7 +25,7 @@ class HomeController extends Controller
     public function index()
     {
 
-        Auth::logout();
-        return view('home');
+        //Auth::logout();
+        return view('clients');
     }
 }

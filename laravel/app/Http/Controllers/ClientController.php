@@ -6,10 +6,17 @@ use Gate;
 use Validator;
 use Illuminate\Http\Request;
 use \App\Client;
+use \App\Services\Treinaweb;
 
 class ClientController extends Controller
 {
+    protected $treina;
 
+    public function __construct(Treinaweb $treina)
+    {
+        $this->treina = $treina;
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -17,6 +24,9 @@ class ClientController extends Controller
      */
     public function index(Request $request)
     {
+        //$treina = app()->make(Treinaweb::class);
+        dd($this->treina); 
+        
         var_dump(session('todotasks'));
 
         $clients = Client::get();

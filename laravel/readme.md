@@ -1,4 +1,5 @@
-
+- Criar um Provider
+php artisan make:provider ValidationServiceProvider
 
 - Criando um middleware Before
 php artisan make:middleware CheckTasks

@@ -1,3 +1,6 @@
+- Pacotes mais usados
+https://packalyst.com/packages
+
 - Criar um Provider
 php artisan make:provider ValidationServiceProvider
 

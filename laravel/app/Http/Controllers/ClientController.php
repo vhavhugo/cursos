@@ -8,7 +8,8 @@ use Illuminate\Http\Request;
 use \App\Client;
 use \App\Services\Treinaweb;
 use App\Http\Requests\ClientRequest;
-use illuminate\Validation\Factory;
+use illuminate\Contracts\Validation\Factory;
+// use Illuminate\Contracts\Validation\Factory;
 
 class ClientController extends Controller
 {

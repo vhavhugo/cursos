@@ -20,6 +20,7 @@ Route::group(['middleware' => ['alerttasks','auth']], function(){
         return view('helpers');
     });
     
+    Route::get('clients/pdf', 'ExtraActions\ClientPdf');
     Route::resource('clients', 'ClientController');
     
     Route::get('tasks/add/{id}', 'ToDoTasksController@store');

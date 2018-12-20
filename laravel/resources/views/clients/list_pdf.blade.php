@@ -7,6 +7,7 @@
             <th>ID</th>
             <th>Nome</th>
             <th>Email</th>
+            <th>Idade</th>
         </tr>
     </thead>
     <tbody>
@@ -15,6 +16,7 @@
                 <td>{{ $client->id }}</td>
                 <td>{{ $client->name }}</td>
                 <td>{{ $client->email }}</td>
+                <td>{{ $client->age }}</td>
             </tr>   
         @empty
         <tr>

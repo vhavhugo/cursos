@@ -26,9 +26,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-         $this->app->bind('App\Services\Treinaweb', function($app){
-            
-            return new \App\Services\Treinaweb('99du8u8dh8edhe8dh8e');
-         });
+
     }
 }

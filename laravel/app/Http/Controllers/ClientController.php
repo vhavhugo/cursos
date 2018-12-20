@@ -7,26 +7,18 @@ use Validator;
 use Illuminate\Http\Request;
 use \App\Client;
 use \App\Services\Treinaweb;
+use App\Http\Requests\ClientRequest;
+use illuminate\Validation\Factory;
 
 class ClientController extends Controller
 {
-    protected $treina;
-
-    public function __construct(Treinaweb $treina)
-    {
-        $this->treina = $treina;
-    }
-    
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
-    {
-        //$treina = app()->make(Treinaweb::class);
-        dd($this->treina); 
-        
+    {    
         var_dump(session('todotasks'));
 
         $clients = Client::get();
@@ -107,9 +99,9 @@ class ClientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Factory $validator, Request $request, $id)
     {
-        Validator::make($request->all(), [
+        $validator->make($request->all(), [
             'name' => ['required', 'max:100', 'min:3'],
             'email' => ['required', 'email', 'unique:Clients'],
             'age' => ['required', 'integer'],

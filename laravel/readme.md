@@ -1,3 +1,13 @@
+- Seeds, popular projeto
+- Criar seed
+php artisan make:seed ClientsTableSeeder
+composer dump-autoload
+- Fazer funcionar
+php artisan db:seed
+
+- Package Discovery
+https://github.com/barryvdh/laravel-debugbar
+
 - Pacotes mais usados
 https://packalyst.com/packages
 

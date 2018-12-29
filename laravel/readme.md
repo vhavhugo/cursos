@@ -5,6 +5,11 @@ composer dump-autoload
 - Fazer funcionar
 php artisan db:seed
 
+- Popular o projeto com aparecia real
+php artisan make:factory ClientFactory
+composer dump-autoload
+php artisan db:seed
+
 - Package Discovery
 https://github.com/barryvdh/laravel-debugbar
 

@@ -20,6 +20,6 @@ class ClientsTableSeeder extends Seeder
         //     'photo' => str_random(100),
         //     'user_id' => 1
         // ]);
-        factory(Client::class, 3)->create();
+        factory(Client::class, 5)->create();
     }
 }

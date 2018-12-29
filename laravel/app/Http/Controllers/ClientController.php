@@ -68,28 +68,23 @@ class ClientController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int  Client $client
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Client $client)
     {
-        $client = Client::findOrFail($id);
         return view('clients.show', compact('client'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int  Client $client
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Client $client)
     {
-
-        $client = Client::findOrFail($id);
-
-        $this->authorize('client.edit', $client);
-        
+        $this->authorize('update-client', $client);        
         return view('clients.edit', compact('client'));
     }
 
@@ -97,21 +92,19 @@ class ClientController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  int  Client $client
      * @return \Illuminate\Http\Response
      */
-    public function update(Factory $validator, Request $request, $id)
+    public function update(Factory $validator, Request $request, Client $client)
     {
         $validator->make($request->all(), [
             'name' => ['required', 'max:100', 'min:3'],
-            'email' => ['required', 'email', 'unique:Clients'],
+            'email' => ['required', 'email', 'unique:clients'],
             'age' => ['required', 'integer'],
             'photo' => ['photo' => 'mimes:jpeg,bmp,png']
         ])->validate();
 
-        $client = Client::findOrFail($id);
-        
-        $this->authorize('client.edit', $client);
+        $this->authorize('update-client', $client);
 
         if($request->hasFile('photo')){
             $client->photo = $request->photo->store('public');
@@ -129,20 +122,20 @@ class ClientController extends Controller
 
        return redirect()->route('clients.index');
     }
+
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int  Client $client
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Client $client, Request $request)
     {
-        $client = Client::findOrfail($id);
-        $this->authorize('client.edit', $client);
+        $this->authorize('update-client', $client);
         if($client->delete()){
-            session()->flash('success','Cliente deletado com sucesso!');
+            $request->session()->flash('success','Cliente deletado com sucesso!');
         }else{
-            session()->flash('error','Erro ao deletar cliente');
+            $request->session()->flash('error','Erro ao deletar cliente');
         }
             return redirect()->route('clients.index');
 

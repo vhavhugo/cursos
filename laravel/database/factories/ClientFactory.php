@@ -8,6 +8,6 @@ $factory->define(\App\Client::class, function (Faker $faker) {
         'email'     => $faker->unique->safeEmail,
         'age'       => $faker->randomNumber(2),
         'photo'     => $faker->imageUrl(),
-        'user_id'   => 1
+        'user_id'   => 2
     ];
 });

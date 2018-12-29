@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use Gate;
 use Validator;
 use Illuminate\Http\Request;
@@ -46,17 +47,11 @@ class ClientController extends Controller
     public function store(Request $request)
     {
 
-        $client = new Client;
-        
-        if($request->hasFile('photo')){
-            $client->photo = $request->photo->store('public');
-        }
+        $data = $request->all();
+        $data['user_id'] = Auth::User()->id;        
+        $data['photo'] = $request->photo->store('public');
 
-       $client->name = $request->input('name');
-       $client->email = $request->input('email');
-       $client->age = $request->input('age');
-
-       if($client->save()){
+       if(Client::create($data)){
             $request->session()->flash('success','Cliente cadastrado com sucesso!');
        }else{
            $request->session()->flash('error','Erro ao cadastrar cliente');
@@ -104,17 +99,15 @@ class ClientController extends Controller
             'photo' => ['photo' => 'mimes:jpeg,bmp,png']
         ])->validate();
 
+        $data = $request->all();
+
         $this->authorize('update-client', $client);
 
         if($request->hasFile('photo')){
-            $client->photo = $request->photo->store('public');
+            $data['photo'] = $request->photo->store('public');
         }
 
-       $client->name = $request->input('name');
-       $client->email = $request->input('email');
-       $client->age = $request->input('age');
-
-       if($client->save()){
+       if($client->update($data)){
             $request->session()->flash('success','Cliente atualizado com sucesso!');
         }else{
             $request->session()->flash('error','Erro ao atualizar cliente');

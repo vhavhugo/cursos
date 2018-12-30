@@ -13,6 +13,7 @@
                     <tr>
                         <th>ID</th>
                         <th>Nome</th>
+                        <th>Cliente</th>
                         <th>Custo</th>
                         <th>Ações</th>
                     </tr>
@@ -26,6 +27,9 @@
                                     {{ $project->name }}
                                 </a>
                             </td>
+
+                            {{--  <td>{{ $project->client->name }}</td>  --}}
+                            <td></td>
                             <td>{{ $project->cost }}</td>
                             <td>
                                 

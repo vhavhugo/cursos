@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('titulo-pagina')
-    <h1>Lista de projetos</h1>
+    <h1>Lista de tasks</h1>
 @endsection
 
 @section('content')
@@ -12,51 +12,47 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Nome</th>
-                        <th>Cliente</th>
-                        <th>Custo</th>
+                        <th>Subject</th>
+                        <th>Descição</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($projects as $project)
+                    @forelse ($tasks as $task)
                         <tr>
-                            <td>{{ $project->id }}</td>
+                            <td>{{ $task->id }}</td>
                             <td>
-                                <a href="{{ route('projects.show', $project->id) }}">
-                                    {{ $project->name }}
+                                <a href="{{ route('tasks.show', $task->id) }}">
+                                    {{ $task->subject }}
                                 </a>
                             </td>
-
-                            {{--  <td>{{ $project->client->name }}</td>  --}}
-                            <td></td>
-                            <td>{{ $project->cost }}</td>
+                            <td>{{ $task->made ? 'Sim' : 'Não' }}</td>
+                            <td>{{ $task->description }}</td>
                             <td>
                                 
-                                <a class="btn btn-success" href="{{ route('projects.edit', $project->id) }}">Editar</a>
-                                <form style="display: inline" action="{{ route('projects.destroy', $project->id) }}" method="post">
+                                <a class="btn btn-success" href="{{ route('tasks.edit', $task->id) }}">Editar</a>
+                                <form style="display: inline" action="{{ route('tasks.destroy', $task->id) }}" method="post">
                                     {{ csrf_field() }}
                                     {{ method_field('DELETE') }}
 
                                     <button type="submit" class="btn btn-danger"
-                                        onclick="return confirm('Tem certeza que deseja remover o projeto?')">
+                                        onclick="return confirm('Tem certeza que deseja remover o task?')">
                                         Deletar
                                     </button>
                                 </form>
-                                
                             </td>
                         </tr>   
                     @empty
                     <tr>
-                        <td>Nenhum projeto cadastrado!</td>
+                        <td>Nenhum task cadastrado!</td>
                     </tr>
                     @endforelse                    
                 </tbody>
             </table>
             <div class="row text-center">
-                {{ $projects->links() }}
+                {{ $tasks->links() }}
             </div>
-            <a href="{{ route('projects.create') }}">Criar projeto</a>
+            <a href="{{ route('tasks.create') }}">Criar task</a>
         </div>
     </div>
 @endsection

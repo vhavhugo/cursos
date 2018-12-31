@@ -49,6 +49,9 @@
                     @endforelse                    
                 </tbody>
             </table>
+            <div class="row text-center">
+                {{ $clients->links() }}
+            </div>
             <a href="{{ route('clients.create') }}">Criar Cliente</a> -
             <a href="{{ url('clients/pdf') }}">Baixar lista em PDF</a>
         </div>

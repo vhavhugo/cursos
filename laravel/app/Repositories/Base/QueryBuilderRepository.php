@@ -16,7 +16,7 @@ abstract class QueryBuilderRepository implements RepositoryInterface
      */
     public function getAll(int $page = 10)
     {
-        return DB::table($this->table)->paginete($page);
+        return DB::table($this->table)->paginate($page);
     }
 
     /**

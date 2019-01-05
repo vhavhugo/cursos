@@ -116,7 +116,7 @@ class TaskController extends Controller
      */
     public function destroy($id, Request $request)
     {
-        $result = DB::table('tasks')->where('id', $id)->delete();
+        $result = $this->taskRepository->delete($id);
         if($result){
             $request->session()->flash('success', 'Tarefa deletada com sucesso');
         }else{

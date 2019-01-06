@@ -7,12 +7,10 @@ use Auth;
 use Gate;
 use Validator;
 use Illuminate\Http\Request;
-// use Illuminate\Http\Response;
 use \App\Client;
 use \App\Services\Treinaweb;
 use App\Http\Requests\ClientRequest;
 use illuminate\Contracts\Validation\Factory;
-// use Illuminate\Contracts\Validation\Factory;
 
 class ClientController extends Controller
 {
@@ -21,20 +19,14 @@ class ClientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     { 
-        return response("<h1>Lista de clientes</h1>")
-                    ->header('Content-Type','text/html', true);
-        // return $response->setContent('<h1>Lista de clientes</h1>')
-        //                 ->header('Content-Type', 'text/html', true)
-        //                 ->setStatusCode('403');
-        // return "<h1>Lista de clientes</h1>";
-        // Log::error("O usuário " . Auth::user() . " assessou a lista de cliente");
+        Log::error("O usuário " . Auth::user() . " assessou a lista de cliente");
    
-        // var_dump(session('todotasks'));
+        var_dump(session('todotasks'));
 
-        // $clients = Client::paginate(20);
-        // return view('clients.index', compact('clients'));
+        $clients = Client::paginate(20);
+       return view('clients.index', compact('clients'));
     }
 
     /**
@@ -69,7 +61,7 @@ class ClientController extends Controller
            $request->session()->flash('error','Erro ao cadastrar cliente');
        }
 
-       return redirect()->route('clients.index');
+       return redirect()->away('http://treinaweb.com.br');
     }
 
     /**

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Log;
 use Auth;
 use Gate;
 use Validator;
@@ -23,7 +24,7 @@ class ClientController extends Controller
     {    
         var_dump(session('todotasks'));
 
-        $clients = Client::paginate(5);
+        $clients = Client::paginate(20);
         return view('clients.index', compact('clients'));
     }
 
@@ -46,6 +47,8 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
+
+        Log::info("O usuário " . Auth::user() . " criou um novo cliente");
 
         $data = $request->all();
         $data['user_id'] = Auth::User()->id;        

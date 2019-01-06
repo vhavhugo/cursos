@@ -28,7 +28,9 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->bind(
             'App\Repositories\Interfaces\TaskRepositoryInterface',
-            'App\Repositories\Implementations\TaskRepository'
+            'App\Repositories\Implementations\TaskRepository',
+            'App\Repositories\Interfaces\ProjectRepositoryInterface',
+            'App\Repositories\Implementations\EloquentProjectRepository'
         );
         
     }

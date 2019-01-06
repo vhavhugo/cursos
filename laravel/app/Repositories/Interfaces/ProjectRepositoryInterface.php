@@ -2,6 +2,6 @@
 
 namespace App\Repositories\Interfaces;
 
-interface TaskRepositoryInterface{
+interface ProjectRepositoryInterface{
     public function getBySubject($subject);
 }

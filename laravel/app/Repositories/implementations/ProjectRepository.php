@@ -3,15 +3,15 @@
 namespace App\Repositories\Implementations;
 
 use App\Repositories\Base\QueryBuilderRepository;
-use App\Repositories\Interfaces\TaskRepositoryInterface;
+use App\Repositories\Interfaces\ProjectRepositoryInterface;
 
-class TaskRepository extends QueryBuilderRepository implements TaskRepositoryInterface{
+class ProjectRepository extends QueryBuilderRepository implements ProjectRepositoryInterface{
     /**
      * Nome da tabela
      *
      * @var string
      */
-    protected $table = 'tasks';
+    protected $table = 'projects';
 
     public function getBySubject($subject){
         /**

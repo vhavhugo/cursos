@@ -56,12 +56,15 @@ class ClientController extends Controller
         $data['photo'] = $request->photo->store('public');
 
        if(Client::create($data)){
-            $request->session()->flash('success','Cliente cadastrado com sucesso!');
-       }else{
-           $request->session()->flash('error','Erro ao cadastrar cliente');
+           return redirect()->route('clients.index')
+                            ->with('success', 'Cliente cadastrado com sucesso!');
+            // $request->session()->flash('success','Cliente cadastrado com sucesso!');
+    //    }else{
+        //    $request->session()->flash('error','Erro ao cadastrar cliente');
        }
 
-       return redirect()->away('http://treinaweb.com.br');
+       return redirect()->route('clients.index')
+                        ->width('error','Erro ao cadastrar cliente');
     }
 
     /**
@@ -111,13 +114,12 @@ class ClientController extends Controller
             $data['photo'] = $request->photo->store('public');
         }
 
-       if($client->update($data)){
-            $request->session()->flash('success','Cliente atualizado com sucesso!');
-        }else{
-            $request->session()->flash('error','Erro ao atualizar cliente');
+        if($client->update($data)){
+            return redirect()->route('clients.index')
+                             ->with('success', 'Cliente foi atualizado com sucesso!');
         }
-
-       return redirect()->route('clients.index');
+        return redirect()->route('clients.index')
+                         ->width('error','Erro ao atualizar cliente');
     }
 
     /**
@@ -129,12 +131,12 @@ class ClientController extends Controller
     public function destroy(Client $client, Request $request)
     {
         $this->authorize('update-client', $client);
-        if($client->delete()){
-            $request->session()->flash('success','Cliente deletado com sucesso!');
-        }else{
-            $request->session()->flash('error','Erro ao deletar cliente');
-        }
-            return redirect()->route('clients.index');
 
-    }
+        if($client->delete()){
+            return redirect()->route('clients.index')
+                             ->with('success', 'Cliente foi excluido com sucesso!');
+        }
+        return redirect()->route('clients.index')
+                         ->width('error','Erro ao excluir cliente');
+        }
 }

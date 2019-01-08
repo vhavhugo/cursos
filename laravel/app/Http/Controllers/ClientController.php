@@ -27,6 +27,8 @@ class ClientController extends Controller
 
         $clients = Client::paginate(20);
        return view('clients.index', compact('clients'));
+    // return $clients;
+        // return response()->json($clients);
     }
 
     /**

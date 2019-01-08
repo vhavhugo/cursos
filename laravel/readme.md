@@ -1,3 +1,11 @@
+- Laravel mix
+- Instalar
+npm install
+- Iniciar
+npm run dev
+
+
+
 - Seeds, popular projeto
 - Criar seed
 php artisan make:seed ClientsTableSeeder

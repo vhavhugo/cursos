@@ -14,6 +14,12 @@ use illuminate\Contracts\Validation\Factory;
 
 class ClientController extends Controller
 {
+
+    public function __construct(ClientRepositoryInterface $clientsRepository)
+    {
+        $this->clientsRepository = $clientsRepository;   
+    }
+
     /**
      * Display a listing of the resource.
      *

@@ -7,6 +7,11 @@
 @section('content')
 
     <div class="row">
+
+        <div class="form-group pull-right">
+            <input type="text" id="client_search" class="form-control" placeholder="Procure pelo assunto">
+        </div>
+
         <div class="col-md-12">
             <table class="table table-striped">
                 <thead>
@@ -17,7 +22,7 @@
                         <th>Ações</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="client_list">
                     @forelse ($clients as $client)
                         <tr>
                             <td>{{ $client->id }}</td>

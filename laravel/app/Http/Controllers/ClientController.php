@@ -11,14 +11,15 @@ use \App\Client;
 use \App\Services\Treinaweb;
 use App\Http\Requests\ClientRequest;
 use illuminate\Contracts\Validation\Factory;
+// use App\Repositories\Interfaces\ClientRepositoryInterface;
 
 class ClientController extends Controller
 {
 
-    public function __construct(ClientRepositoryInterface $clientsRepository)
-    {
-        $this->clientsRepository = $clientsRepository;   
-    }
+    // public function __construct(ClientRepositoryInterface $clientsRepository)
+    // {
+    //     $this->clientsRepository = $clientsRepository;   
+    // }
 
     /**
      * Display a listing of the resource.

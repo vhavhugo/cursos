@@ -3,9 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Repositories\Interfaces\ClientRepositoryInterface;
 
 class ClientApiController extends Controller
 {
+
+    public function __construct(ClientRepositoryInterface $clientRepository){
+        $this->clientRepository = $clientRepository;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +19,7 @@ class ClientApiController extends Controller
      */
     public function index()
     {
-        //
+        return $this->clientRepository->getAll();
     }
 
     /**
@@ -35,7 +41,7 @@ class ClientApiController extends Controller
      */
     public function show($id)
     {
-        //
+        return $this->clientRepository->find($id);
     }
 
     /**

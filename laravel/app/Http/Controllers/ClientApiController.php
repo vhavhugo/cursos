@@ -30,7 +30,12 @@ class ClientApiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $result = $this->clientRepository->create([
+            'subject'       => $request->subject,
+            'made'          => $request->made,
+            'descrepition'  => $request->description
+        ]);
+        return response()->json($result, 201);
     }
 
     /**
@@ -53,7 +58,12 @@ class ClientApiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $result = $this->clientRepository->update($id, [
+            'subject'       => $request->subject,
+            'made'          => $request->made,
+            'descrepition'  => $request->description
+        ]);
+        return response()->json($result, 200);
     }
 
     /**
@@ -64,6 +74,7 @@ class ClientApiController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $result = $this->clientRepository->delete($id);
+        return response()->json($result, 204);
     }
 }

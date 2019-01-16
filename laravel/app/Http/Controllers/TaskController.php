@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use App\Repositories\Implementations\TaskRepository;
 use App\Repositories\Interfaces\TaskRepositoryInterface;
 
 class TaskController extends Controller
@@ -25,7 +26,7 @@ class TaskController extends Controller
     public function index()
     {
         $tasks = $this->taskRepository->getAll();
-        return view('tasks.index', compact('tasks'));
+        return view('tasks.index')->with($tasks, compact('tasks'));
     }
 
     /**
